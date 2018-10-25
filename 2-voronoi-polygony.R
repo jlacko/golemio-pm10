@@ -1,11 +1,12 @@
-# připravit a uložit mapu voronoi polygonů vnitřku Prahy podle nejbližších laviček
+# připravit a uložit mapu voronoi polygonů vnitřku Prahy podle nejbližších meteo stanic
 
 library(sf)
 library(RCzechia)
 library(tidyverse)
 
-data <- read_csv2('./data/lavicky.csv') %>%
-  distinct(identifier, longitude, latitude) # unikátní hodnoty
+data <- read_csv2('./data/stanice.csv') %>%
+  mutate(id = identifier) %>%
+  distinct(id, longitude, latitude) # unikátní hodnoty
 
 lavicky <- st_as_sf(data, coords = c("longitude", "latitude"), 
                     crs = 4326, agr = "constant") %>% # z obyčejného data frejmu na sf
