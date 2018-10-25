@@ -10,7 +10,7 @@ mapa <- readRDS('polygony.rds') # praha s voronoi polygony podle meteostanic
 data <- read.csv2('./data/stanice.csv', stringsAsFactors = F) %>% # stažený soubor
   transmute(id = identifier, time = source_timestamp, metrika = PM10) %>% # jen zajímavé sloupce
   mutate(time = as.POSIXct(time)) %>% # čas je čas...
-  mutate(time = floor_date(time, "minute")) # sekundy nepřidávají hodnotu
+  mutate(time = round_date(time, "15 minutes")) # sekundy nepřidávají hodnotu
 
 # data <- filter(data, time == min(data$time)) # jeden řez, pro debugging a pro pražáky dobrý...
 
@@ -27,9 +27,13 @@ obrazek <- ggplot(podklad) +
   scale_fill_gradientn(colours = rev(heat.colors(10)), name = leyenda) +
   geom_sf(data = vltava, color = 'steelblue', lwd = 1.5) +
   geom_sf(data = obrys, fill = NA, color = 'gray50', lwd = 1) +
-  ggtitle(paste(metrika, 'v Praze {frame_time}')) +
+  ggtitle(paste(metrika, 'v Praze {closest_state}')) +
   theme_bw() +
-  transition_time(time) 
+  transition_states(
+    time,
+    transition_length = 2,
+    state_length = 1
+  ) 
 
 animate(obrazek, height = 600, width = 800)
 
