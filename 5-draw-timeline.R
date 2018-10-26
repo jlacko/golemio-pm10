@@ -21,9 +21,9 @@ osa <- ggplot(data = data, aes(x = time, y = metrika)) +
   theme(axis.title.x = element_blank()) +
   transition_states(nazev,
                     transition_length = 2, 
-                    state_length = 3) +
+                    state_length = 5) +
   ease_aes('sine-in-out')
 
-animate(osa, height = 600, width = 800)
+animate(osa, nframes = 350, fps = 7, height = 600, width = 800)
 
 anim_save('casova-osa.gif')
