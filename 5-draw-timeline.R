@@ -24,6 +24,6 @@ osa <- ggplot(data = data, aes(x = time, y = metrika)) +
                     state_length = 5) +
   ease_aes('sine-in-out')
 
-animate(osa, nframes = 350, fps = 7, height = 600, width = 800)
+animate(osa, nframes = 350, fps = 6, height = 600, width = 800)
 
 anim_save('casova-osa.gif')
