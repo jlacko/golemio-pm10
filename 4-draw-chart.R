@@ -4,6 +4,7 @@ library(sf)
 library(tidyverse)
 library(gganimate)
 library(lubridate)
+library(viridis)
 
 mapa <- readRDS('polygony.rds') # praha s voronoi polygony podle meteostanic
 
@@ -17,17 +18,17 @@ data <- read.csv2('./data/stanice.csv', stringsAsFactors = F) %>% # stažený so
 podklad <- mapa %>% # podklad pro obrázek
   inner_join(data, by = c('id', 'id')) # klíč je id stanice
 
-metrika <- 'Pevné částice'
-leyenda <- 'PM\u2081\u2080'
+metrika <- 'Polétavý prach'
+leyenda <- 'PM₁₀ μ·m³'
 
 load('pomocna_geometrie.RData') # obrysy Prahy + kus Vltavy
 
 obrazek <- ggplot(podklad) + 
   geom_sf(aes(fill = metrika), lwd = 0) +
-  scale_fill_gradientn(colours = rev(heat.colors(10)), name = leyenda) +
-  geom_sf(data = vltava, color = 'steelblue', lwd = 1.5) +
-  geom_sf(data = obrys, fill = NA, color = 'gray50', lwd = 1) +
-  ggtitle(paste(metrika, 'v Praze {closest_state}')) +
+  scale_fill_gradientn(colors = rev(heat.colors(25, alpha = 0.8)), name = leyenda) +
+  geom_sf(data = vltava, color = 'slategray3', lwd = 1.25) +
+  geom_sf(data = obrys, fill = NA, color = 'gray75', lwd = 1, alpha = 0.6) +
+  ggtitle(paste(metrika, 'v Praze, stav k {closest_state}')) +
   theme_bw() +
   transition_states(
     time,
