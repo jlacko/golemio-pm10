@@ -1,5 +1,6 @@
 # nakreslit časovou osu pevných částic podle stanic
 
+library(gganimate)
 library(tidyverse)
 library(scales)
 
@@ -7,16 +8,22 @@ data <- read.csv2('./data/stanice.csv', stringsAsFactors = F) %>%
   transmute(nazev = name, time = source_timestamp, metrika = PM10) %>%
   mutate(time = as.POSIXct(time)) # čas je čas...
 
-metrika <- 'Pevné částice'
-leyenda <- 'PM\u2081\u2080'
+metrika <- 'Polétavý prach'
+leyenda <- 'PM₁₀ μ·m³'
 
-ggplot(data = data, aes(x = time, y = metrika, color = nazev, group = nazev)) +
-  geom_line() +
+osa <- ggplot(data = data, aes(x = time, y = metrika)) +
+  geom_line(color = 'firebrick', lwd = 2) +
   scale_x_datetime() +
   ggtitle(paste(metrika, 'v Praze')) +
   ylab(leyenda) +
+  ggtitle(paste(metrika, 'v Praze, měřicí stanice {closest_state}')) +
+  theme_bw() +
   theme(axis.title.x = element_blank()) +
-  guides(color=guide_legend(title="Měřicí stanice")) +
-  theme_bw()
+  transition_states(nazev,
+                    transition_length = 2, 
+                    state_length = 3) +
+  ease_aes('sine-in-out')
 
-ggsave("casova-osa.png", width = 8, height = 6, units = "in", dpi = 100) # čiliže 800 na 600
+animate(osa, height = 600, width = 800)
+
+anim_save('casova-osa.gif')
