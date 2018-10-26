@@ -4,7 +4,6 @@ library(sf)
 library(tidyverse)
 library(gganimate)
 library(lubridate)
-library(viridis)
 
 mapa <- readRDS('polygony.rds') # praha s voronoi polygony podle meteostanic
 
@@ -30,12 +29,10 @@ obrazek <- ggplot(podklad) +
   geom_sf(data = obrys, fill = NA, color = 'gray75', lwd = 1, alpha = 0.6) +
   ggtitle(paste(metrika, 'v Praze, stav k {closest_state}')) +
   theme_bw() +
-  transition_states(
-    time,
-    transition_length = 2,
-    state_length = 1
-  ) 
+  transition_states(time, 
+                    transition_length = 2,
+                    state_length = 1) 
 
-animate(obrazek, height = 600, width = 800)
+animate(obrazek,nframes = 200, height = 600, width = 800)
 
 anim_save('obrazek.gif')
