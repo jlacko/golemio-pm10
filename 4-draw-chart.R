@@ -28,7 +28,7 @@ obrazek <- ggplot(podklad) +
                        low = 'green2',
                        mid = 'yellow',
                        high = 'red3',
-                       na.value = 'gray90',
+                       na.value = 'gray95',
                        name = leyenda) +
   geom_sf(data = vltava, color = 'slategray3', lwd = 1.25) +
   geom_sf(data = obrys, fill = NA, color = 'gray75', lwd = 1, alpha = 0.6) +
