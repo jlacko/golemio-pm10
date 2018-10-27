@@ -24,3 +24,5 @@ Kód je napsán v jazyce R, skládá se z několika logických částí, které 
 - nápočet pomocných grafických objektů: hranic Prahy a kusu Vltavy pro hezčí mapu
 - nápočet & uložení animace mapy
 - nápočet & uložení animace časové osy měření po stanicich
+
+Třetí a čtvrtý bod (vytvoření polygonů a pomocných objektů) stačí pustit jednou, zbytek je třeba udělat pokaždé. Snadno to zařídí soubor `9-orchestrator.R`.
