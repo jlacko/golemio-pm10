@@ -15,7 +15,6 @@ anotace <- c('horní mez - 330/2012 Sb.', 'imisní limit - 201/2012 Sb.')
 
 osa <- ggplot(data = data, aes(x = time, y = metrika)) +
   geom_line(color = 'firebrick', lwd = 2) +
-  scale_x_datetime() +
   ggtitle(paste(metrika, 'v Praze')) +
   geom_hline(yintercept=35, linetype="dashed", color = "gray75", lwd = 0.7, alpha = 0.6) +
   geom_hline(yintercept=50, linetype="dashed", color = "red", lwd = 0.7, alpha = .6) +
@@ -25,6 +24,7 @@ osa <- ggplot(data = data, aes(x = time, y = metrika)) +
   ggtitle(paste(metrika, 'v Praze, měřicí stanice {closest_state}')) +
   theme_bw() +
   theme(axis.title.x = element_blank()) +
+  scale_x_datetime(labels = date_format("%Y-%m-%d %H:%M")) +
   transition_states(nazev,
                     transition_length = 2, 
                     state_length = 5) +
