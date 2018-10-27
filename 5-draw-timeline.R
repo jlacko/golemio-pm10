@@ -33,4 +33,4 @@ osa <- ggplot(data = data, aes(x = time, y = metrika)) +
 # animate(osa, nframes = 350, fps = 6, height = 600, width = 800)
 animate(osa, height = 600, width = 800)
 
-anim_save('casova-osa.gif')
+anim_save('./data/casova-osa.gif')

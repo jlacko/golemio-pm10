@@ -40,4 +40,4 @@ obrazek <- ggplot(podklad) +
 
 animate(obrazek,nframes = 200, height = 600, width = 800)
 
-anim_save('obrazek.gif')
+anim_save('./data/obrazek.gif')
