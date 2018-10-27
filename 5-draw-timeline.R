@@ -34,4 +34,4 @@ animate(osa, nframes = 350, fps = 6, height = 600, width = 800) # dlouhý, pocti
 
 #animate(osa, height = 600, width = 800) # kratší, šizený nápočet
 
-anim_save('./data/casova-osa.gif')
+anim_save('./img/casova-osa.gif')
