@@ -23,8 +23,13 @@ leyenda <- 'PM₁₀ μ·m³'
 load('pomocna_geometrie.RData') # obrysy Prahy + kus Vltavy
 
 obrazek <- ggplot(podklad) + 
-  geom_sf(aes(fill = metrika), lwd = 0) +
-  scale_fill_gradientn(colors = rev(heat.colors(25, alpha = 0.8)), name = leyenda) +
+  geom_sf(aes(fill = metrika), lwd = 0, alpha = 0.8) +
+  scale_fill_gradient2(midpoint = 35,
+                       low = 'green2',
+                       mid = 'yellow',
+                       high = 'red3',
+                       na.value = 'gray90',
+                       name = leyenda) +
   geom_sf(data = vltava, color = 'slategray3', lwd = 1.25) +
   geom_sf(data = obrys, fill = NA, color = 'gray75', lwd = 1, alpha = 0.6) +
   ggtitle(paste(metrika, 'v Praze, stav k {closest_state}')) +

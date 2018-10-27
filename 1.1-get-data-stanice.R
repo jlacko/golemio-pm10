@@ -7,8 +7,8 @@ source('0-get-token.R') # výsledek = objekt response s access tokenem v sobě
 
 odkaz <- paste0('https://ckc-emea.cisco.com/t/prague-city.com/cdp/v1/opendata/1.0/prague/',
                 '?domain=airqualityreports', # meteo stanice
-                '&fromDate=', '2018-10-24',
-                '&toDate=', '2018-10-25',
+                '&fromDate=', Sys.Date()-1,
+                '&toDate=', Sys.Date(),
                 '&count=1000', # 17 čidel × 24 hodin × 2 pozorování do hodiny = 816
                 '&format=json')
 
