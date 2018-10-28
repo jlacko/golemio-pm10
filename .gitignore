@@ -39,7 +39,6 @@ rsconnect/
 # Vlastní projekt
 token.rds
 data/
-obrazek.gif
-casova-osa.gif
+img/
 sync.sh
 *.log
