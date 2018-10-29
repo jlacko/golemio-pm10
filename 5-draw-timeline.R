@@ -18,8 +18,8 @@ osa <- ggplot(data = data, aes(x = time, y = metrika)) +
   ggtitle(paste(metrika, 'v Praze')) +
   geom_hline(yintercept=35, linetype="dashed", color = "gray75", lwd = 0.7, alpha = 0.6) +
   geom_hline(yintercept=50, linetype="dashed", color = "red", lwd = 0.7, alpha = .6) +
-  annotate('text', x =  max(data$time) - dhours(1.5), y = 38, label = anotace[1], color = 'gray40', vjust = 1) +
-  annotate('text', x =  max(data$time) - dhours(1.5), y = 53, label = anotace[2], color = 'gray40', vjust = 1) +  
+  annotate('text', x =  max(data$time) - dhours(1.5), y = 37, label = anotace[1], color = 'gray40', vjust = 1) +
+  annotate('text', x =  max(data$time) - dhours(1.5), y = 52, label = anotace[2], color = 'gray40', vjust = 1) +  
   ylab(leyenda) +
   ggtitle(paste(metrika, 'v Praze, měřicí stanice {closest_state}')) +
   theme_bw() +
