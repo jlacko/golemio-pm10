@@ -18,6 +18,6 @@ capture.output({
 }, file = '/dev/null')
 
 
-system('./sync.sh') # uloží obsah adresáře /img na internet - soubor je gitignorován coby nerelevantní 
+if (file.exists('sync.sh')) system('./sync.sh') # uloží obsah adresáře /img na internet - soubor je gitignorován coby nerelevantní 
 
 print(paste("golemio doběhl", Sys.time()))
