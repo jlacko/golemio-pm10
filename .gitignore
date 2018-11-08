@@ -42,3 +42,4 @@ data/
 img/
 sync.sh
 *.log
+message.txt

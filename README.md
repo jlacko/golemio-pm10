@@ -17,7 +17,7 @@ Cílem tohoto projektu je prokázat proveditelnost denního stahování dat o kv
 ### Heatmapa výsledků měření po stanicích a v čase
 
 <p align="center">
-  <img src="http://www.jla-data.net/CZE/2018-10-26-prazska-data_files/heatmapa.png" alt="časová osa"/>
+  <img src="http://www.jla-data.net/CZE/2018-10-26-prazska-data_files/heatmapa.png" alt="heatmapa"/>
 </p>
 
 <hr>
@@ -32,4 +32,4 @@ Kód je napsán v jazyce R, skládá se z několika logických částí, které 
 - nápočet & uložení animace časové osy měření po stanicich
 - nápočet & uložení heatmapy 
 
-Třetí a čtvrtý bod (vytvoření polygonů a pomocných objektů) stačí pustit jednou, zbytek je třeba udělat pokaždé. Snadno to zařídí soubor `9-orchestrator.R`.
+Třetí a čtvrtý bod (vytvoření polygonů a pomocných objektů) stačí pustit jednou, zbytek je třeba udělat pokaždé. Snadno to zařídí soubor `9-orchestrator.R`. Za mě ho pravidelně spouští CRON job.
